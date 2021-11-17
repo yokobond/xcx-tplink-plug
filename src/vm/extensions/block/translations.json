@@ -1,0 +1,14 @@
+{
+  "en": {
+    "tpLinkPlug.name": "TP-Link Plug",
+    "tpLinkPlug.doIt": "do it [SCRIPT]"
+  },
+  "ja": {
+    "tpLinkPlug.name": "TP-Link Plug",
+    "tpLinkPlug.doIt": "[SCRIPT] を実行する"
+  },
+  "ja-Hira": {
+    "tpLinkPlug.name": "TP-Link Plug",
+    "tpLinkPlug.doIt": "[SCRIPT] をじっこうする"
+  }
+}
