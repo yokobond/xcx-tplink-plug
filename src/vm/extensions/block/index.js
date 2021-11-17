@@ -91,11 +91,38 @@ class ExtensionBlocks {
         }
     }
 
-    doIt (args) {
-        const func = new Function(`return (${Cast.toString(args.SCRIPT)})`);
-        const result = func.call(this);
-        console.log(result);
-        return result;
+    setDevicePower (args) {
+        const body = {host: Cast.toString(args.HOST), power: (args.STATE === 'ON')};
+        const url = new URL('http://localhost:3030');
+        url.pathname = 'state';
+        const req = new Request(
+            url,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body),
+                mode: 'cors'
+            }
+        );
+        return new Promise(
+            resolve => {
+                fetch(req)
+                    .then(res => {
+                        if (res.ok) {
+                            res.json().then(data => {
+                                resolve(JSON.stringify(data));
+                            });
+                        } else {
+                            resolve(`${res.status}: ${res.statusText}, URL: ${req.url}`);
+                        }
+                    })
+                    .catch(error => {
+                        resolve(`${error}, URL: ${req.url}`);
+                    });
+            }
+        );
     }
 
     /**
@@ -111,24 +138,32 @@ class ExtensionBlocks {
             showStatusButton: false,
             blocks: [
                 {
-                    opcode: 'do-it',
-                    blockType: BlockType.REPORTER,
-                    blockAllThreads: false,
+                    opcode: 'setDevicePower',
+                    blockType: BlockType.COMMAND,
                     text: formatMessage({
-                        id: 'tpLinkPlug.doIt',
-                        default: 'do it [SCRIPT]',
-                        description: 'execute javascript for example'
+                        id: 'tpLinkPlug.setDevicePower',
+                        default: 'device [HOST] power [STATE]',
+                        description: ''
                     }),
-                    func: 'doIt',
+                    func: 'setDevicePower',
                     arguments: {
-                        SCRIPT: {
+                        HOST: {
                             type: ArgumentType.STRING,
-                            defaultValue: '3 + 4'
+                            defaultValue: '192.168.0.0'
+                        },
+                        STATE: {
+                            type: ArgumentType.STRING,
+                            menu: 'powerStateMenu',
+                            defaultValue: 'OFF'
                         }
                     }
                 }
             ],
             menus: {
+                powerStateMenu: {
+                    acceptReporters: false,
+                    items: ['ON', 'OFF']
+                }
             }
         };
     }

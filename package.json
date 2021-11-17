@@ -2,8 +2,8 @@
   "name": "xcx-tplink-plug",
   "version": "0.0.0",
   "scripts": {
-    "register": "npx xcratch-register --link -C --id=tpLinkPlug --gui=\"../scratch-gui\" --block=\"./src/vm/extensions/block\" --entry\"./src/gui/lib/libraries/extensions/entry\"",
-    "build": "npx xcratch-build --module=tpLinkPlug --gui=\"../scratch-gui\" --block=\"./src/vm/extensions/block\" --entry\"./src/gui/lib/libraries/extensions/entry\""
+    "register": "npx xcratch-register --link -C --id=tpLinkPlug --gui=\"../scratch-gui\" --block=\"./src/vm/extensions/block\" --entry=\"./src/gui/lib/libraries/extensions/entry\"",
+    "build": "npx xcratch-build --module=tpLinkPlug --gui=\"../scratch-gui\" --block=\"./src/vm/extensions/block\" --entry=\"./src/gui/lib/libraries/extensions/entry\""
   },
   "devDependencies": {
     "xcratch-build": "^0.3.0",

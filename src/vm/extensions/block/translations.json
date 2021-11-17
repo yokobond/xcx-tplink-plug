@@ -1,14 +1,14 @@
 {
   "en": {
     "tpLinkPlug.name": "TP-Link Plug",
-    "tpLinkPlug.doIt": "do it [SCRIPT]"
+    "tpLinkPlug.setDevicePower": "device [HOST] power [STATE]"
   },
   "ja": {
     "tpLinkPlug.name": "TP-Link Plug",
-    "tpLinkPlug.doIt": "[SCRIPT] を実行する"
+    "tpLinkPlug.setDevicePower": "[HOST] のデバイスを [STATE] にする"
   },
   "ja-Hira": {
     "tpLinkPlug.name": "TP-Link Plug",
-    "tpLinkPlug.doIt": "[SCRIPT] をじっこうする"
+    "tpLinkPlug.setDevicePower": "[HOST] のデバイスを [STATE] にする"
   }
 }
